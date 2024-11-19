@@ -1,0 +1,125 @@
+{
+  "Inputs": [
+    {
+      "FileInput": "WILLBEOVERWRITTEN",
+      "AudioSelectors": {
+        "Audio Selector 1": {
+          "Offset": 0,
+          "DefaultSelection": "DEFAULT",
+          "ProgramSelection": 1
+        }
+      },
+      "VideoSelector": {
+        "ColorSpace": "FOLLOW"
+      }
+    }
+  ],
+  "OutputGroups": [
+    {
+      "Name": "File Group",
+      "OutputGroupSettings": {
+        "Type": "FILE_GROUP_SETTINGS",
+        "FileGroupSettings": {
+          "Destination": "file"
+        }
+      },
+      "Outputs": [
+        {
+          "NameModifier": "_file",
+          "ContainerSettings": {
+            "Container": "MP4",
+            "Mp4Settings": {}
+          },
+          "VideoDescription": {
+            "CodecSettings": {
+              "Codec": "H_264",
+              "H264Settings": {
+                "Bitrate": 5000000,
+                "CodecLevel": "AUTO",
+                "CodecProfile": "HIGH",
+                "InterlaceMode": "PROGRESSIVE",
+                "RateControlMode": "CBR",
+                "GopSize": 90,
+                "GopSizeUnits": "FRAMES",
+                "HrdBufferSize": 10000000,
+                "HrdBufferInitialFillPercentage": 90,
+                "ParControl": "SPECIFIED",
+                "ParNumerator": 1,
+                "ParDenominator": 1
+              }
+            },
+            "Height": 1080,
+            "Width": 1920
+          },
+          "AudioDescriptions": [
+            {
+              "AudioTypeControl": "FOLLOW_INPUT",
+              "CodecSettings": {
+                "Codec": "AAC",
+                "AacSettings": {
+                  "Bitrate": 96000,
+                  "CodingMode": "CODING_MODE_2_0",
+                  "SampleRate": 48000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "HLS Group",
+      "OutputGroupSettings": {
+        "Type": "HLS_GROUP_SETTINGS",
+        "HlsGroupSettings": {
+          "Destination": "hls",
+          "SegmentLength": 10,
+          "MinSegmentLength": 0
+        }
+      },
+      "Outputs": [
+        {
+          "NameModifier": "_hls",
+          "ContainerSettings": {
+            "Container": "M3U8",
+            "M3u8Settings": {}
+          },
+          "VideoDescription": {
+            "CodecSettings": {
+              "Codec": "H_264",
+              "H264Settings": {
+                "Bitrate": 5000000,
+                "CodecLevel": "AUTO",
+                "CodecProfile": "MAIN",
+                "InterlaceMode": "PROGRESSIVE",
+                "RateControlMode": "CBR",
+                "GopSize": 90,
+                "GopSizeUnits": "FRAMES",
+                "HrdBufferSize": 10000000,
+                "HrdBufferInitialFillPercentage": 90,
+                "ParControl": "SPECIFIED",
+                "ParNumerator": 1,
+                "ParDenominator": 1
+              }
+            },
+            "Height": 1080,
+            "Width": 1920
+          },
+          "AudioDescriptions": [
+            {
+              "AudioTypeControl": "FOLLOW_INPUT",
+              "CodecSettings": {
+                "Codec": "AAC",
+                "AacSettings": {
+                  "Bitrate": 96000,
+                  "CodingMode": "CODING_MODE_2_0",
+                  "SampleRate": 48000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
